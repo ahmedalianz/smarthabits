@@ -1,6 +1,19 @@
 {
   "extends": "@react-native/typescript-config",
-  "compilerOptions": {
+    "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@/features/*": ["src/features/*"],
+      "@/navigation/*": ["src/navigation/*"],
+      "@/components/*": ["src/components/*"],
+      "@/hooks/*": ["src/hooks/*"],
+      "@/services/*": ["src/services/*"],
+      "@/types/*": ["src/types/*"],
+      "@/utils/*": ["src/utils/*"],
+      "@/theme/*": ["src/theme/*"]
+    },
+    "exactOptionalPropertyTypes": true,
     "types": ["jest"],
   },
   "include": ["**/*.ts", "**/*.tsx"],
