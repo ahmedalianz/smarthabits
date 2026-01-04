@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "211798654380",
+    "project_id": "smart-habits-dev",
+    "storage_bucket": "smart-habits-dev.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:211798654380:android:bf28acd8e20d211ae34e09",
+        "android_client_info": {
+          "package_name": "com.smarthabits"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBB21kZ-JKO654tkSQQXtHDnkRIwAu9JCg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

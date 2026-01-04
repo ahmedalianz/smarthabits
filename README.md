@@ -186,3 +186,39 @@ Settings
 Performance
 
 Clean architecture
+
+📋 Sprint 1 Deliverables (If you choose Auth)
+Week 1:
+
+Firebase project setup
+Email/Password registration screen
+Email/Password login screen
+Form validation (Zod)
+Error handling & user feedback
+
+Week 2:
+
+Forgot password flow
+Auth persistence (AsyncStorage)
+Protected routes (navigation guards)
+Loading states & spinners
+Unit tests for auth flows
+E2E test for login/register
+
+Week 3 (Buffer):
+
+Polish UI/UX
+Add animations
+Write documentation
+Code review & refactor
+
+🚀 Success Criteria
+By end of Sprint 1, you should have:
+
+✅ Working login/register screens
+✅ User can create account
+✅ User can login
+✅ User stays logged in (persistence)
+✅ User can logout
+✅ All auth flows tested
+✅ Clean, documented code
