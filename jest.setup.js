@@ -8,6 +8,7 @@ jest.mock('react-native-mmkv', () => ({
     remove: jest.fn(),
   })),
 }));
+
 // Mock console methods in tests
 global.console = {
   ...console,

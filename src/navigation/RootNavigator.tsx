@@ -1,15 +1,18 @@
 import useAppTheme from '@/hooks/useAppTheme';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { StatusBar } from 'react-native';
-import HabitsStack from './HabitsStack';
-import SettingsStack from './SettingsStack';
 import {
   DarkTheme,
   DefaultTheme,
   NavigationContainer,
 } from '@react-navigation/native';
-
-const Tab = createBottomTabNavigator();
+import { ActivityIndicator, StatusBar, StyleSheet, View } from 'react-native';
+import AppStack from './app/AppStack';
+import AuthStack from './auth/AuthStack';
+import {
+  useUser,
+  useInitializeAuth,
+  useAuthLoading,
+} from '@/store/selectors/authSelectors';
+import { useEffect } from 'react';
 
 export default function RootNavigator() {
   const { name: themeName, theme } = useAppTheme();
@@ -25,6 +28,28 @@ export default function RootNavigator() {
       notification: theme.colors.primary,
     },
   };
+  const user = useUser();
+  const initializeAuth = useInitializeAuth();
+  const isAuthLoading = useAuthLoading();
+
+  useEffect(() => {
+    const unsubscribe = initializeAuth();
+    return () => unsubscribe();
+  }, [initializeAuth]);
+
+  if (isAuthLoading)
+    return (
+      <View
+        testID="loading-screen"
+        style={[
+          styles.loadingContainer,
+          { backgroundColor: theme.colors.background },
+        ]}
+      >
+        <ActivityIndicator size="large" color={theme.colors.primary} />
+      </View>
+    );
+
   return (
     <>
       <StatusBar
@@ -32,11 +57,16 @@ export default function RootNavigator() {
         backgroundColor={theme.colors.background}
       />
       <NavigationContainer theme={navigationTheme}>
-        <Tab.Navigator>
-          <Tab.Screen name="HabitsStack" component={HabitsStack} />
-          <Tab.Screen name="SettingsStack" component={SettingsStack} />
-        </Tab.Navigator>
+        {user ? <AppStack /> : <AuthStack />}
       </NavigationContainer>
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});

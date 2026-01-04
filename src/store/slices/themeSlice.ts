@@ -1,13 +1,14 @@
 import { ThemeMode } from '@/theme';
 import { StateCreator } from 'zustand';
+import { AppStore } from '..';
 
 export type ThemeSlice = {
   theme: ThemeMode;
   setTheme: (theme: ThemeMode) => void;
 };
 export const createThemeSlice: StateCreator<
-  ThemeSlice,
-  [['zustand/immer', never]],
+  AppStore,
+  [['zustand/immer', never], ['zustand/persist', unknown]],
   [],
   ThemeSlice
 > = (set: any) => ({
